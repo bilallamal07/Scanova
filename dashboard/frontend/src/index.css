@@ -23,35 +23,49 @@
 	padding: 0;
 }
 
-/* ===== WHITE HEADERS OVER ANIMATED BACKGROUND ===== */
+/* ===== WHITE HEADERS ===== */
 
 h1, h2, h3, h4, h5, h6 {
 	color: #ffffff;
 }
 
-/* Cards and panels: semi-transparent dark backing so text stays readable */
-.card,
-.panel,
-.result-card,
-.finding-card,
-.scan-panel,
-.docs-panel,
-.ai-panel {
-	background-color: rgba(10, 10, 10, 0.82) !important;
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
+/* ===== HERO CANVAS WRAPPER ===== */
+/* Positions the WebGL animation behind only the nav + hero section */
+
+.app-root {
+	position: relative;
+	min-height: 100vh;
 }
 
-/* Nav: transparent so the animation bleeds through */
-.nav {
-	background-color: rgba(10, 10, 10, 0.55);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
+.hero-canvas-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 580px;
+	overflow: hidden;
+	z-index: 0;
+}
+
+/* Gradient that blends the animation edge into the page background */
+.hero-canvas-fade {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 140px;
+	background: linear-gradient(to bottom, transparent, var(--bg-primary));
+	z-index: 1;
+}
+
+.app-content {
+	position: relative;
+	z-index: 1;
 }
 
 body {
 	font-family: var(--font-mono);
-	background-color: transparent;
+	background-color: var(--bg-primary);
 	color: var(--text-primary);
 	min-height: 100vh;
 	font-size: 14px;
