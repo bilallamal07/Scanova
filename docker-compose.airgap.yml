@@ -1,0 +1,14 @@
+# Air-gap mode — zero network access.
+# Use this when scanning untrusted skills that may attempt to phone home.
+#
+# Usage:
+#   SKILL_PATH=/path/to/skill docker-compose -f docker-compose.airgap.yml up
+#   SKILL_PATH=/path/to/skill docker-compose -f docker-compose.airgap.yml run scanner --format markdown > report.md
+
+services:
+  scanner:
+    build: .
+    network_mode: none          # NO network — suspicious code cannot exfiltrate
+    volumes:
+      - ${SKILL_PATH:-.}:/scan:ro
+    command: ["--format", "terminal", "/scan"]

@@ -1,0 +1,13 @@
+# Standard mode — scanner has outbound network (e.g. for VirusTotal integration).
+# Mount the skill directory via SKILL_PATH env var.
+#
+# Usage:
+#   SKILL_PATH=/path/to/skill docker-compose up
+#   SKILL_PATH=/path/to/skill docker-compose run scanner --format markdown > report.md
+
+services:
+  scanner:
+    build: .
+    volumes:
+      - ${SKILL_PATH:-.}:/scan:ro
+    command: ["--format", "terminal", "/scan"]
