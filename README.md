@@ -5,6 +5,8 @@ Security intelligence platform for AI agent skill files. Detects risky patterns 
 ![Python Version](https://img.shields.io/badge/python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![Scanova dashboard](dashboard-screenshot.png)
+
 ## Overview
 
 Scanova is a security analysis tool that scans agent skill definitions for potential risks and policy violations. It combines local static analysis across 7 security dimensions with VirusTotal URL scanning (70+ engines) and AI-powered remediation summaries via Ollama.
