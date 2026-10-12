@@ -1,1 +1,31 @@
+# Secrets / local config
 .env
+.env.*
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+
+# Node / build
+node_modules/
+dist/
+build/
+
+# OS / IDE / agent tooling
+.DS_Store
+.idea/
+.vscode/
+.playwright-mcp/
+.agent/
+.claude/
+GEMINI.md
+
+# Local screenshots
+*.png
