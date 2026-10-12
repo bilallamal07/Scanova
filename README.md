@@ -303,9 +303,7 @@ ruff format .
 cd dashboard/frontend && npm run dev
 ```
 
-## Author
-
-
+> **Note:** `tests/fixtures/malicious_skill/` contains deliberately malicious sample text used to test the scanner's rules. This is normal for a security scanner, but antivirus tools or GitHub may flag it.
 
 ## License
 
