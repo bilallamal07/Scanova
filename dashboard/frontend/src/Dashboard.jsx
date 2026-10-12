@@ -1492,7 +1492,7 @@ export default function Dashboard() {
 
             {/* Footer */}
             <footer className="footer">
-                Scanova - Security Intelligence - 
+                Scanova - Security Intelligence
             </footer>
         </div>
     );
