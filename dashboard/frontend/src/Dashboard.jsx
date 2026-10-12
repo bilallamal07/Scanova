@@ -23,6 +23,7 @@ import {
     Timer,
     Trash2,
     EyeOff,
+    Syringe,
     LayoutList
 } from 'lucide-react';
 import {
@@ -58,6 +59,7 @@ const DIMENSION_ICONS = {
     persistence: Timer,
     destructive_ops: Trash2,
     obfuscation: EyeOff,
+    prompt_injection: Syringe,
 };
 
 const DIMENSIONS = [
@@ -67,6 +69,7 @@ const DIMENSIONS = [
     { key: 'persistence', title: 'Persistence', desc: 'Detects modifications to startup files, cron jobs, and other mechanisms for maintaining access.' },
     { key: 'destructive_ops', title: 'Destructive Operations', desc: 'Flags file deletion, system modifications, and other potentially irreversible actions.' },
     { key: 'obfuscation', title: 'Obfuscation', desc: 'Identifies encoded payloads, dynamic code construction, and techniques to hide intent.' },
+    { key: 'prompt_injection', title: 'Prompt Injection', desc: 'Detects instructions that try to override, hijack, or manipulate the agent\'s behavior.' },
 ];
 
 const SEVERITY_COLORS = {
@@ -79,7 +82,7 @@ const SEVERITY_COLORS = {
 
 const SEVERITY_ORDER = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW', 'INFO'];
 
-const DIMENSION_COLORS = ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#3498db', '#9b59b6'];
+const DIMENSION_COLORS = ['#e74c3c', '#e67e22', '#f1c40f', '#2ecc71', '#3498db', '#9b59b6', '#1abc9c'];
 
 /* ── Pulsing Core Logo Component ── */
 function ScanovaLogo({ size = 'large' }) {
@@ -276,7 +279,8 @@ export default function Dashboard() {
             secret_access: 0,
             persistence: 0,
             destructive_ops: 0,
-            obfuscation: 0
+            obfuscation: 0,
+            prompt_injection: 0
         };
         report.findings.forEach(f => {
             dims[f.dimension] += f.severity + 1;
@@ -379,7 +383,7 @@ export default function Dashboard() {
                         <div className="docs-body">
                             <p className="docs-intro">
                                 Scanova is an open-source security analysis platform for agentic architectures.
-                                It performs structured six-dimensional risk assessment across all agents and external
+                                It performs structured seven-dimensional risk assessment across all agents and external
                                 dependencies, detecting remote code execution paths, data exfiltration vectors,
                                 credential exposure, privilege abuse, and integration vulnerabilities before deployment.
                             </p>
@@ -416,7 +420,7 @@ export default function Dashboard() {
                                 </div>
                             </div>
 
-                            <h3>Six Dimensions</h3>
+                            <h3>Seven Dimensions</h3>
                             <div className="docs-dimensions">
                                 {DIMENSIONS.map((d, i) => (
                                     <div key={d.key} className="docs-dim-item">
@@ -1120,6 +1124,7 @@ export default function Dashboard() {
                                                                                 dim.key === 'secret_access' ? 'access credentials and API keys stored on the system' :
                                                                                 dim.key === 'persistence' ? 'maintain persistent access across system restarts' :
                                                                                 dim.key === 'destructive_ops' ? 'destroy data or corrupt system state irreversibly' :
+                                                                                dim.key === 'prompt_injection' ? 'override the agent\'s instructions and hijack its behavior' :
                                                                                 'hide malicious intent through code obfuscation'
                                                                             }.`}
                                                                         </p>
@@ -1142,6 +1147,7 @@ export default function Dashboard() {
                                                                                      dim.key === 'secret_access' ? '# Use a secrets manager (e.g., vault) instead' :
                                                                                      dim.key === 'persistence' ? '# Remove auto-start hooks; use managed schedulers' :
                                                                                      dim.key === 'destructive_ops' ? '# Add confirmation + backup before destructive ops' :
+                                                                                     dim.key === 'prompt_injection' ? '# Remove instruction-override text; keep skill content declarative' :
                                                                                      '# Replace obfuscated code with readable equivalent'}
                                                                                 </code>
                                                                             </div>
@@ -1353,7 +1359,7 @@ export default function Dashboard() {
                 <ScanovaLogo size="large" />
                 <p className="hero-subtitle">
                     Comprehensive open-source security platform for agentic architectures.
-                    Delivers six-dimensional risk analysis across all agents and external
+                    Delivers seven-dimensional risk analysis across all agents and external
                     dependencies to proactively detect execution threats, data exfiltration,
                     credential misuse, and systemic vulnerabilities.
                 </p>
@@ -1471,7 +1477,7 @@ export default function Dashboard() {
                         <div className="step-number">02</div>
                         <div className="step-title">Analyze</div>
                         <div className="step-desc">
-                            The scanner runs pattern-based analysis across all 6 security dimensions.
+                            The scanner runs pattern-based analysis across all 7 security dimensions.
                         </div>
                     </div>
                     <div className="how-step">
