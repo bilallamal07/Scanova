@@ -138,10 +138,6 @@ export default function Dashboard() {
 
 
     useEffect(() => {
-        setPath("/Users/Gen_AI_Projects/skill-scanner");
-    }, []);
-
-    useEffect(() => {
         setIsFileUrl(FileUtils.isFileUrl(path));
     }, [path]);
 
